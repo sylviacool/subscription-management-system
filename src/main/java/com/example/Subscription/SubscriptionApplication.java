@@ -1,10 +1,12 @@
 package com.example.Subscription;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
 import java.util.Scanner;
-// 1. Beginner Code Template is already provided to you.
-// 2. Just follow the below task to complete the execution of main application.
+
 @SpringBootApplication
 public class SubscriptionApplication {
 
@@ -12,33 +14,52 @@ public class SubscriptionApplication {
 
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Welcome to the Cinemaxify Application");
+		System.out.println("Welcome to the Subscription Application");
 		System.out.println("Please select the member you want the plan for:");
-		System.out.println("1. Self\n2. Spouse");
+		System.out.println("1. Self\n2. Spouse\n3. Exit");
+		
 		String userType = "";
+		
 		int userChoice = scanner.nextInt();
 		scanner.nextLine();
-		switch (userChoice) {
-		  case 1 -> {
-			  // a. Set userType according to the userChoice.
-		  }
-		  case 2 -> {
-			  // b. Set userType according to the userChoice.
-		  }
-		  case 3 -> {
-			  // c. Print "Exiting..." and return
-				    }
-		  default -> {
-			  // d. Print "Invalid choice." and return.
+		
+		   switch (userChoice) {
+           case 1 -> userType = "self";
+           case 2 -> userType = "spouse";
+           case 3 -> {
+               System.out.println("Exiting...");
+               scanner.close();
+               context.close();
+               return;
+           }
+           default -> {
+               System.out.println("Invalid choice");
+               scanner.close();
+               context.close();
+               return;
+           }
+       }
 
-				     }
-		}
-		// e. Pick the user bean using context.getBean().
-			User user = ;
-		// f. Take input for User details i.e. name , age, address etc.
+		
+			User user = context.getBean(userType, User.class);
+		
+			System.out.println("Enter your name: ");
+		    String userName = scanner.nextLine();
+		    
+		    System.out.println("Enter your age: ");
+		    int userAge = scanner.nextInt();
 
-		// g. Set the above fetched details into the user by using appropriate method.
+		    System.out.println("Enter your contact: ");
+		    Long userContact = scanner.nextLong();
+		    scanner.nextLine(); 
 
-		// h. finally print the details by using appropriate method.
+		    System.out.println("Enter your address: ");
+		    String userAddress = scanner.nextLine();
+
+			user.setUserDetails(userName, userAge, userContact, userAddress);
+			user.getUserDetails();
+			
+			scanner.close();
+	        context.close();
 			}
 	}

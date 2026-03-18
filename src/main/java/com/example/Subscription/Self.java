@@ -19,8 +19,12 @@ public class Self implements User{
 	}
 	@Override
 	public void getUserDetails() {
-		System.out.println(this.name + memberName + this.age + this.contact + this.address);
-		
+	    System.out.println("Your details are as follows:");
+	    System.out.println("Name: " + this.name);
+	    System.out.println("Member type: " + this.memberName);
+	    System.out.println("Age: " + this.age);
+	    System.out.println("Contact: " + this.contact);
+	    System.out.println("Address: " + this.address);
 	}
 
 }

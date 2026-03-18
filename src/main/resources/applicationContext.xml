@@ -4,7 +4,8 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!--    Define the bean id with camelCase Format -->
-<!--    Example My class name is Self then camelCase name would be self -->
 
+<!--    bean definition here-->
+<bean id="self" class="com.example.Subscription.Self"></bean>
+<bean id="spouse" class="com.example.Subscription.Spouse"></bean>
 </beans>

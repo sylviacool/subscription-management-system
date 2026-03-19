@@ -6,4 +6,7 @@ public interface User {
 
     //This method prints the user's details, including their name, member type,age, contact, and address
     void getUserDetails();
+    
+    //This method returns the plan object.
+    Plan getUserPlan();
 }

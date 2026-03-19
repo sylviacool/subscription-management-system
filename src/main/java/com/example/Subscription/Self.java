@@ -8,6 +8,12 @@ public class Self implements User{
     private int age;
     private Long contact;
     private String address;
+    private Plan plan;
+    
+    
+    public Self(Plan plan) {
+    	this.plan = plan;
+    }
     
 	@Override
 	public void setUserDetails(String name, int age, Long contact, String address) {
@@ -25,6 +31,11 @@ public class Self implements User{
 	    System.out.println("Age: " + this.age);
 	    System.out.println("Contact: " + this.contact);
 	    System.out.println("Address: " + this.address);
+	}
+	
+	@Override
+	public Plan getUserPlan() {
+		return this.plan;
 	}
 
 }

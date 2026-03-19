@@ -5,7 +5,25 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-<!--    bean definition here-->
-<bean id="self" class="com.example.Subscription.Self"></bean>
-<bean id="spouse" class="com.example.Subscription.Spouse"></bean>
+				      <!--bean definition here-->
+		<bean id="normalPlan" class="com.example.Subscription.NormalPlan"></bean>
+		<bean id="premiumPlan" class="com.example.Subscription.PremiumPlan"></bean>	      
+				      
+				      
+		<bean id="selfNormal" class="com.example.Subscription.Self">
+			<constructor-arg ref="normalPlan"/>
+		</bean>
+		
+		<bean id="selfPremium" class="com.example.Subscription.Self">
+			<constructor-arg ref="premiumPlan"/>
+		</bean>
+		
+		
+		<bean id="spouseNormal" class="com.example.Subscription.Spouse">
+			<constructor-arg ref="normalPlan"/>
+		</bean>
+		
+		<bean id="spousePremium" class="com.example.Subscription.Spouse">
+			<constructor-arg ref="premiumPlan"/>
+		</bean>
 </beans>

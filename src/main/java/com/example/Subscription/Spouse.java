@@ -7,6 +7,12 @@ public class Spouse implements User{
     private int age;
     private Long contact;
     private String address;
+    private Plan plan;
+    
+    
+    public Spouse (Plan plan) {
+    	this.plan = plan;
+    }
     
     @Override
 	public void setUserDetails(String name, int age, Long contact, String address) {
@@ -25,5 +31,10 @@ public class Spouse implements User{
         System.out.println("Contact: " + this.contact);
         System.out.println("Address: " + this.address);
     }
+
+	@Override
+	public Plan getUserPlan() {
+		return this.plan;
+	}
 
 }

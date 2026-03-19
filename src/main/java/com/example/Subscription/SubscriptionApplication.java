@@ -17,28 +17,34 @@ public class SubscriptionApplication {
 		System.out.println("Welcome to the Subscription Application");
 		System.out.println("Please select the member you want the plan for:");
 		System.out.println("1. Self\n2. Spouse\n3. Exit");
+		int userChoice = scanner.nextInt();
+		
+		System.out.println("Choose the Plan you want:\n1. Normal Plan\n2. Premium Plan");
+		int userPlanSelect = scanner.nextInt();
+		scanner.nextLine();
 		
 		String userType = "";
 		
-		int userChoice = scanner.nextInt();
-		scanner.nextLine();
 		
-		   switch (userChoice) {
-           case 1 -> userType = "self";
-           case 2 -> userType = "spouse";
-           case 3 -> {
-               System.out.println("Exiting...");
-               scanner.close();
-               context.close();
-               return;
-           }
-           default -> {
-               System.out.println("Invalid choice");
-               scanner.close();
-               context.close();
-               return;
-           }
-       }
+		switch (userChoice) {
+		    case 1 -> {
+		        switch (userPlanSelect) {
+		            case 1 -> userType = "selfNormal";
+		            case 2 -> userType = "selfPremium";
+		            default -> System.out.println("Invalid plan");
+		        }
+		    }
+
+		    case 2 -> {
+		        switch (userPlanSelect) {
+		            case 1 -> userType = "spouseNormal";
+		            case 2 -> userType = "spousePremium";
+		            default -> System.out.println("Invalid plan");
+		        }
+		    }
+
+	    default -> System.out.println("Invalid user");
+	}
 
 		
 			User user = context.getBean(userType, User.class);
